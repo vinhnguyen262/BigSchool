@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebApplication1.Models.Course>
+﻿    @model IEnumerable<WebApplication1.Models.Course>
 @{
     ViewBag.Title = "Home Page";
 }
@@ -8,7 +8,23 @@
         @foreach (var course in Model)
         {
             <li>
-                @course.Datetime - @course.Lecturer.Name
+                <div class="date">
+                    <div class="month">
+                        @course.Datetime.ToString("MM")
+                    </div>
+                    <div class="date">
+                        @course.Datetime.ToString("dd")
+                    </div>
+                </div>
+                <div class="details">
+                    <span class="lecturer">
+                        @course.Lecturer.Name
+                    </span>
+                    <span class="category">
+                        @course.Category.name
+                    </span>
+                </div>
+              
             </li>
         }
     </ul>

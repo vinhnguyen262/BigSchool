@@ -1,7 +1,10 @@
 ﻿@model  WebApplication1.ViewModel.CoursesViewModel
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Attending";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<h2>Attending</h2>
 
 <div class="row">
     <ul>
@@ -21,7 +24,7 @@
                         @course.Lecturer.Name
                         @if (Model.ShowAction)
                         {
-                        <button class="btn btn-default btn-sm js-toggle-follow" data-user-id="@course.LecturerID"> Follow </button>
+                            <button class="btn btn-default btn-sm js-toggle-follow" data-user-id="@course.LecturerID"> Follow </button>
                         }
                     </span>
                     <span class="category">
@@ -30,10 +33,10 @@
                         {
                             <button data-courser-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going? </button>
                         }
-                        </span>
-                   
+                    </span>
+
                 </div>
-              
+
             </li>
 
         }
@@ -58,7 +61,7 @@
                     var button = $(e.target);
                     $.post("/api/followings", {FolloweeId: button.attr("data-course-id") })
                         .done(function () {
-                            
+
                             button.text("Following");
                         })
                         .fail(function () {
@@ -68,5 +71,6 @@
             });
 
         </script>
-        }
+    }
 </div>
+
